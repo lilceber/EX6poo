@@ -1,0 +1,29 @@
+class Animal {
+  
+    public void emitirSom() {
+        System.out.println("O animal faz um som.");
+    }
+}
+
+class Cachorro extends Animal {
+    @Override
+    public void emitirSom() { 
+        System.out.println("O cachorro late.");
+    }
+
+    public void emitirSom(String som) { 
+        System.out.println("O cachorro faz o som: " + som);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Animal meuAnimal = new Cachorro();
+        meuAnimal.emitirSom();
+
+        Cachorro meuCachorro = new Cachorro();
+        meuCachorro.emitirSom(); 
+        meuCachorro.emitirSom("au au!"); 
+    }
+}
