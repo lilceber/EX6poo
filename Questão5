@@ -1,0 +1,104 @@
+public abstract class ObjetoGeometrico {
+
+    public abstract void mostrarDados();
+
+    public abstract double calcularArea();
+
+    public abstract double calcularPerimetro();
+}
+public class Circulo extends ObjetoGeometrico {
+    private double x, y, raio; // Centro (x, y) e raio
+
+    public Circulo(double x, double y, double raio) {
+        this.x = x;
+        this.y = y;
+        this.raio = raio;
+    }
+
+    @Override
+    public void mostrarDados() {
+        System.out.println("Círculo:");
+        System.out.println("Centro: (" + x + ", " + y + ")");
+        System.out.println("Raio: " + raio);
+    }
+
+    @Override
+    public double calcularArea() {
+        return Math.PI * raio * raio;
+    }
+
+    @Override
+    public double calcularPerimetro() {
+        return 2 * Math.PI * raio;
+    }
+}
+public class Retangulo extends ObjetoGeometrico {
+    private double base, altura;
+
+    public Retangulo(double base, double altura) {
+        this.base = base;
+        this.altura = altura;
+    }
+
+    @Override
+    public void mostrarDados() {
+        System.out.println("Retângulo:");
+        System.out.println("Base: " + base);
+        System.out.println("Altura: " + altura);
+    }
+
+    @Override
+    public double calcularArea() {
+        return base * altura;
+    }
+
+    @Override
+    public double calcularPerimetro() {
+        return 2 * (base + altura);
+    }
+}
+public class Triangulo extends ObjetoGeometrico {
+    private double ladoA, ladoB, ladoC;
+
+    public Triangulo(double ladoA, double ladoB, double ladoC) {
+        this.ladoA = ladoA;
+        this.ladoB = ladoB;
+        this.ladoC = ladoC;
+    }
+
+    @Override
+    public void mostrarDados() {
+        System.out.println("Triângulo:");
+        System.out.println("Lados: " + ladoA + ", " + ladoB + ", " + ladoC);
+    }
+
+    @Override
+    public double calcularArea() {
+        double s = calcularPerimetro() / 2; // Semiperímetro
+        return Math.sqrt(s * (s - ladoA) * (s - ladoB) * (s - ladoC));
+    }
+
+    @Override
+    public double calcularPerimetro() {
+        return ladoA + ladoB + ladoC;
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+
+        ObjetoGeometrico circulo = new Circulo(1, 2, 5);
+        circulo.mostrarDados();
+        System.out.println("Área: " + circulo.calcularArea());
+        System.out.println("Perímetro: " + circulo.calcularPerimetro());
+
+        ObjetoGeometrico retangulo = new Retangulo(5, 10);
+        retangulo.mostrarDados();
+        System.out.println("Área: " + retangulo.calcularArea());
+        System.out.println("Perímetro: " + retangulo.calcularPerimetro());
+
+        ObjetoGeometrico triangulo = new Triangulo(3, 3, 3);
+        triangulo.mostrarDados();
+        System.out.println("Área: " + triangulo.calcularArea());
+        System.out.println("Perímetro: " + triangulo.calcularPerimetro());
+    }
+}
